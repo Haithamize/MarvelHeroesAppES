@@ -7,8 +7,8 @@ import com.haithamghanem.extremesolutiontask.domain.repository.HeroCharactersRep
 import retrofit2.Response
 
 class HeroCharactersRepoImpl(private val remoteDataSource: RemoteDataSource): HeroCharactersRepo {
-    override suspend fun getHeroCharacters(): Resource<APIResponse> {
-        return responseToResource(remoteDataSource.getHeroCharacters())
+    override suspend fun getHeroCharacters(name: String, limit: Int): Resource<APIResponse> {
+        return responseToResource(remoteDataSource.getHeroCharacters(name,limit))
     }
 
     override suspend fun getSearchedHeroCharacters(searchQuery: String): Resource<APIResponse> {

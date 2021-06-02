@@ -11,7 +11,7 @@ interface MarvelAPIService {
     @GET("v1/public/characters")
     suspend fun getHeroCharacters(
             @Query("name")
-            name: String,
+            name: String="",
             @Query("limit")
             limit: Int,
             @Query("apikey")
