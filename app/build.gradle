@@ -13,7 +13,8 @@ android {
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
-
+        buildConfigField("String","API_KEY",MY_KEY)
+        buildConfigField("String","BASE_URL",MY_URL)
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -45,4 +46,9 @@ dependencies {
 
     //GSON
     implementation 'com.google.code.gson:gson:2.8.7'
+    //retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    //GSON Converter
+    implementation 'com.squareup.retrofit2:converter-gson'
+
 }
