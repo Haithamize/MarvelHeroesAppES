@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/marvelHeroesFragment">
+
+    <fragment
+        android:id="@+id/marvelHeroesFragment"
+        android:name="com.haithamghanem.extremesolutiontask.MarvelHeroesFragment"
+        android:label="fragment_marvel_heroes"
+        tools:layout="@layout/fragment_marvel_heroes" >
+        <action
+            android:id="@+id/action_marvelHeroesFragment_to_heroesInfoFragment"
+            app:destination="@id/heroesInfoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/heroesInfoFragment"
+        android:name="com.haithamghanem.extremesolutiontask.HeroesInfoFragment"
+        android:label="fragment_heroes_info"
+        tools:layout="@layout/fragment_heroes_info" />
+</navigation>
