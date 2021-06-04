@@ -6,6 +6,6 @@ import com.haithamghanem.extremesolutiontask.domain.repository.HeroCharactersRep
 
 class GetHeroCharacterUseCase(private val heroCharactersRepo: HeroCharactersRepo) {
 
-    suspend fun execute(name: String, limit: Int): Resource<APIResponse> = heroCharactersRepo.getHeroCharacters(name, limit)
+    suspend fun execute(limit: Int): Resource<APIResponse> = heroCharactersRepo.getHeroCharacters( limit)
 
 }

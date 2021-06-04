@@ -19,7 +19,7 @@ class NetModule {
     fun provideRetrofit(): Retrofit{
         return Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl("https://gateway.marvel.com")
+            .baseUrl("https://gateway.marvel.com:443/v1/public/")
             .build()
     }
 

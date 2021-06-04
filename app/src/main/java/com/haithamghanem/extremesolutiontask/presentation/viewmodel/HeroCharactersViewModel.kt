@@ -18,17 +18,18 @@ class HeroCharactersViewModel( val app:Application,val getHeroCharacterUseCase: 
 
     val marvelHeroCharacters: MutableLiveData<Resource<APIResponse>> = MutableLiveData()
 
-    fun getMarvelHeroCharacters(name: String, limit: Int) = viewModelScope.launch (Dispatchers.IO){
+    fun getMarvelHeroCharacters( limit: Int) = viewModelScope.launch (Dispatchers.IO){
 
         marvelHeroCharacters.postValue(Resource.Loading())
 
         if(isNetworkAvailable(app)) {
 
-            val apiResponse = getHeroCharacterUseCase.execute(name, limit)
+            val apiResponse = getHeroCharacterUseCase.execute(limit)
             marvelHeroCharacters.postValue(apiResponse)
         }else{
             marvelHeroCharacters.postValue(Resource.Error("Internet is not available, please check your internet connection"))
         }
+
     }
 
     private fun isNetworkAvailable(context: Context?):Boolean{
