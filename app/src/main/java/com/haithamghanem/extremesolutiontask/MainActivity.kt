@@ -2,6 +2,7 @@ package com.haithamghanem.extremesolutiontask
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import com.haithamghanem.extremesolutiontask.databinding.ActivityMainBinding
 import com.haithamghanem.extremesolutiontask.presentation.viewmodel.HeroCharactersViewModel
@@ -20,10 +21,15 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+
         bindin = ActivityMainBinding.inflate(layoutInflater)
+        setTheme(R.style.Theme_ExtremeSolutionTask)
         setContentView(bindin.root)
 
         viewModel = ViewModelProvider(this,factory).get(HeroCharactersViewModel::class.java)
 
     }
+
+
+    fun onBackPressed(view: View) = onBackPressed()
 }

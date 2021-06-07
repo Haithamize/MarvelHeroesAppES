@@ -52,9 +52,10 @@ class HeroesInfoFragment : Fragment() {
         heroesInfoBinding.heroDescriptionTxt.text = result.description
         heroesInfoBinding.heroName.text = result.name
 
+        initEventsRecyclerView()
         initComicsRecyclerView()
         initSeriesRecyclerView()
-        initEventsRecyclerView()
+
         initStoriesRecyclerView()
 
     }
