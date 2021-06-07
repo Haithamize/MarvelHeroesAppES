@@ -2,6 +2,7 @@ package com.haithamghanem.extremesolutiontask.data.model
 
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class Data(
     val count: Int,
@@ -9,4 +10,4 @@ data class Data(
     val offset: Int,
     val results: List<Result>,
     val total: Int
-)
+): Serializable

@@ -2,6 +2,7 @@ package com.haithamghanem.extremesolutiontask.data.model
 
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class APIResponse(
     val attributionHTML: String,
@@ -11,4 +12,4 @@ data class APIResponse(
     val `data`: Data,
     val etag: String,
     val status: String
-)
+):Serializable

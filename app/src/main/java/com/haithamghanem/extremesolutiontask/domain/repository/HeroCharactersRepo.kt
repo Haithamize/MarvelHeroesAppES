@@ -6,5 +6,5 @@ import com.haithamghanem.extremesolutiontask.data.util.Resource
 interface HeroCharactersRepo {
 
     suspend fun getHeroCharacters( limit: Int) : Resource<APIResponse>
-    suspend fun getSearchedHeroCharacters(searchQuery: String) : Resource<APIResponse>
+    suspend fun getSearchedHeroCharacters(name: String, limit: Int) : Resource<APIResponse>
 }

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="100dp"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:cardCornerRadius="26dp"
+    android:layout_marginStart="14dp"
+    tools:background="#000">
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="100dp"
+        android:layout_height="160dp"
+        app:cardCornerRadius="12dp"
+        android:backgroundTint="#fff">
+
+
+
+        <ImageView
+            app:layout_constraintTop_toTopOf="parent"
+            android:src="@drawable/mcu_background"
+            android:background="#000"
+            android:id="@+id/comicImg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"/>
+
+
+    </androidx.cardview.widget.CardView>
+
+
+    <TextView
+        android:textAlignment="center"
+        android:id="@+id/comicName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        tools:text="Tony stark- iron man (2018) #19"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        android:maxLines="2"
+        />
+
+
+
+</LinearLayout>
+

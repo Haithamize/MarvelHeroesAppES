@@ -11,9 +11,10 @@ class HeroCharactersRepoImpl(private val remoteDataSource: RemoteDataSource): He
         return responseToResource(remoteDataSource.getHeroCharacters(limit))
     }
 
-    override suspend fun getSearchedHeroCharacters(searchQuery: String): Resource<APIResponse> {
-        TODO("Not yet implemented")
+    override suspend fun getSearchedHeroCharacters(name: String, limit: Int): Resource<APIResponse> {
+        return responseToResource(remoteDataSource.getSearchedHeroCharacters(name, limit))
     }
+
 
     private fun responseToResource(response: Response<APIResponse>) : Resource<APIResponse>{
         if (response.isSuccessful){

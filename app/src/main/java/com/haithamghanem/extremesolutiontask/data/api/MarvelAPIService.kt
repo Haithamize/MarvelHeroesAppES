@@ -19,4 +19,15 @@ interface MarvelAPIService {
         @Query("offset") offset:Int = 0
 
     ): Response<APIResponse>
+
+    @GET("characters")
+    suspend fun getSearchedHeroCharacters(
+            @Query("nameStartsWith") nameStartsWith:String? = null,
+            @Query("limit") limit:Int,
+            @Query("ts") ts:String = "",
+            @Query("apikey") apikey:String = "ec22c60c3645811035cb5d0ae0cb780a",
+            @Query("hash") hash:String = "",
+            @Query("offset") offset:Int = 0
+
+    ): Response<APIResponse>
 }

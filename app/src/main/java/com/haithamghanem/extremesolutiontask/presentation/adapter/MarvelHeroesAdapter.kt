@@ -2,6 +2,7 @@ package com.haithamghanem.extremesolutiontask.presentation.adapter
 
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
@@ -10,7 +11,9 @@ import com.bumptech.glide.Glide
 import com.haithamghanem.extremesolutiontask.databinding.HeroesListItemBinding
 import com.haithamghanem.extremesolutiontask.data.model.Result
 
-class MarvelHeroesAdapter: RecyclerView.Adapter<MarvelHeroesAdapter.MarvelHeroesViewHolder>() {
+class MarvelHeroesAdapter(val recyclerViewOnItemClickListener: RecyclerViewOnItemClickListener): RecyclerView.Adapter<MarvelHeroesAdapter.MarvelHeroesViewHolder>() {
+
+
 
     private val callback  = object : DiffUtil.ItemCallback<Result>(){
         override fun areItemsTheSame(oldItem: Result, newItem: Result): Boolean {
@@ -42,15 +45,23 @@ class MarvelHeroesAdapter: RecyclerView.Adapter<MarvelHeroesAdapter.MarvelHeroes
 
     inner class MarvelHeroesViewHolder(val binding: HeroesListItemBinding): RecyclerView.ViewHolder(binding.root){
         fun bindCharacter(result: Result){
-            Log.d("sayedss", "${result.thumbnail.path +"."+ result.thumbnail.extension}")
+           // Log.d("sayedss", "${result.thumbnail.path +"."+ result.thumbnail.extension}")
             binding.heroNameTxt.text = result.name
             //https://ichef.bbci.co.uk/news/976/cpsprodpb/12A9B/production/_111434467_gettyimages-1143489763.jpg
             val fullPath: String = result.thumbnail.path +"."+ result.thumbnail.extension
             Log.d("tamer", "bindCharacter: $fullPath")
             Glide.with(binding.heroImg.context).load(fullPath).into(binding.heroImg)
 
+            binding.root.setOnClickListener {
+                recyclerViewOnItemClickListener.onItemClickListener(adapterPosition,it,differ.currentList[adapterPosition])
+            }
+
         }
     }
 
+
+    interface RecyclerViewOnItemClickListener{
+        fun onItemClickListener(position: Int, view: View, result: Result)
+    }
 
 }

@@ -2,4 +2,10 @@
     <string name="app_name">ExtremeSolutionTask</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="description">Description</string>
+    <string name="title">Title</string>
+    <string name="comics">Comics</string>
+    <string name="events">Events</string>
+    <string name="series">Series</string>
+    <string name="stories">Stories</string>
 </resources>

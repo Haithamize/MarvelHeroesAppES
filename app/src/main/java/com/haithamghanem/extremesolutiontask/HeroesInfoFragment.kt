@@ -1,59 +1,99 @@
 package com.haithamghanem.extremesolutiontask
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
+import com.haithamghanem.extremesolutiontask.data.model.Result
+import com.haithamghanem.extremesolutiontask.databinding.FragmentHeroesInfoBinding
+import com.haithamghanem.extremesolutiontask.presentation.adapter.ComicsAdapter
+import com.haithamghanem.extremesolutiontask.presentation.adapter.EventsAdapter
+import com.haithamghanem.extremesolutiontask.presentation.adapter.SeriesAdapter
+import com.haithamghanem.extremesolutiontask.presentation.adapter.StoriesAdapter
+import kotlinx.android.synthetic.main.fragment_heroes_info.*
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [HeroesInfoFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class HeroesInfoFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+    private lateinit var heroesInfoBinding: FragmentHeroesInfoBinding
+    private lateinit var result: Result
+    private lateinit var comicsAdapter: ComicsAdapter
+    private lateinit var seriesAdapter: SeriesAdapter
+    private lateinit var eventsAdapter: EventsAdapter
+    private lateinit var storiesAdapter: StoriesAdapter
+
+
+
+
+    override fun onCreateView(
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
+    ): View? {
+        // Inflate the layout for this fragment
+        val bundle = this.arguments
+        if (bundle != null) {
+            result = bundle.getSerializable("HeroInfo") as Result
+
+        }
+        Log.d("bundle", "onCreateView: $result")
+        return inflater.inflate(R.layout.fragment_heroes_info, container, false)
+
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        heroesInfoBinding = FragmentHeroesInfoBinding.bind(view)
+        val fullPath: String = result.thumbnail.path +"."+ result.thumbnail.extension
+        Glide.with(view.context).load(fullPath).into(heroDetailImg)
+        heroesInfoBinding.heroDescriptionTxt.text = result.description
+        heroesInfoBinding.heroName.text = result.name
+
+        initComicsRecyclerView()
+        initSeriesRecyclerView()
+        initEventsRecyclerView()
+        initStoriesRecyclerView()
+
+    }
+
+    private fun initStoriesRecyclerView() {
+        storiesAdapter = StoriesAdapter()
+        storiesAdapter.differ.submitList(result.stories.items)
+        heroesInfoBinding.rvStories.apply {
+            adapter = storiesAdapter
+            layoutManager = LinearLayoutManager(activity,LinearLayoutManager.HORIZONTAL, false)
         }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_heroes_info, container, false)
+    private fun initEventsRecyclerView() {
+        eventsAdapter = EventsAdapter()
+        eventsAdapter.differ.submitList(result.events.items)
+        heroesInfoBinding.rvEvents.apply {
+            adapter = eventsAdapter
+            layoutManager = LinearLayoutManager(activity,LinearLayoutManager.HORIZONTAL, false)
+        }
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment HeroesInfoFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            HeroesInfoFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    private fun initSeriesRecyclerView() {
+        seriesAdapter = SeriesAdapter()
+        seriesAdapter.differ.submitList(result.series.items)
+        heroesInfoBinding.rvSeries.apply {
+            adapter = seriesAdapter
+            layoutManager = LinearLayoutManager(activity,LinearLayoutManager.HORIZONTAL, false)
+        }
     }
+
+    private fun initComicsRecyclerView() {
+        comicsAdapter = ComicsAdapter()
+        comicsAdapter.differ.submitList(result.comics.items)
+        heroesInfoBinding.rvComics.apply {
+            adapter = comicsAdapter
+            layoutManager = LinearLayoutManager(activity,LinearLayoutManager.HORIZONTAL, false)
+        }
+    }
+
+
 }

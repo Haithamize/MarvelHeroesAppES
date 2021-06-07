@@ -5,5 +5,7 @@ import retrofit2.Response
 
 interface RemoteDataSource {
 
-    suspend fun getHeroCharacters( limit: Int): Response<APIResponse>
+    suspend fun getHeroCharacters(limit: Int): Response<APIResponse>
+    suspend fun getSearchedHeroCharacters(name: String, limit: Int): Response<APIResponse>
+
 }

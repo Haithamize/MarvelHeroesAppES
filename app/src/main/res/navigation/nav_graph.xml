@@ -18,5 +18,9 @@
         android:id="@+id/heroesInfoFragment"
         android:name="com.haithamghanem.extremesolutiontask.HeroesInfoFragment"
         android:label="fragment_heroes_info"
-        tools:layout="@layout/fragment_heroes_info" />
+        tools:layout="@layout/fragment_heroes_info" >
+        <action
+            android:id="@+id/action_heroesInfoFragment_to_marvelHeroesFragment"
+            app:destination="@id/marvelHeroesFragment" />
+    </fragment>
 </navigation>

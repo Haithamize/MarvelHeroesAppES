@@ -15,6 +15,10 @@ class RemoteDataSourceImpl(private val marvelAPIService: MarvelAPIService): Remo
         return marvelAPIService.getHeroCharacters(limit,ts = getTimestamp(), hash = getMD5hash(getTimestamp() + "21efccf3a398cc3212b67097c88859791cf13f0e" + "ec22c60c3645811035cb5d0ae0cb780a"))
     }
 
+    override suspend fun getSearchedHeroCharacters(name: String, limit: Int): Response<APIResponse> {
+        return marvelAPIService.getSearchedHeroCharacters(name, limit, ts = getTimestamp(), hash = getMD5hash(getTimestamp() + "21efccf3a398cc3212b67097c88859791cf13f0e" + "ec22c60c3645811035cb5d0ae0cb780a") )
+    }
+
 
     fun getMD5hash(s: String): String {
         var messageDigest: MessageDigest? = null

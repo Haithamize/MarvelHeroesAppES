@@ -2,6 +2,7 @@ package com.haithamghanem.extremesolutiontask.presentation.di
 
 import android.app.Application
 import com.haithamghanem.extremesolutiontask.domain.usecase.GetHeroCharacterUseCase
+import com.haithamghanem.extremesolutiontask.domain.usecase.GetSearchedHeroesUseCase
 import com.haithamghanem.extremesolutiontask.presentation.viewmodel.HeroCharactersViewModelFactory
 import dagger.Module
 import dagger.Provides
@@ -14,7 +15,7 @@ import javax.inject.Singleton
 class FactoryModule {
     @Singleton
     @Provides
-    fun provideHeroCharactersViewModel( app: Application,  getHeroCharacterUseCase: GetHeroCharacterUseCase): HeroCharactersViewModelFactory{
-        return HeroCharactersViewModelFactory(app, getHeroCharacterUseCase)
+    fun provideHeroCharactersViewModel( app: Application,  getHeroCharacterUseCase: GetHeroCharacterUseCase, getSearchedHeroesUseCase: GetSearchedHeroesUseCase): HeroCharactersViewModelFactory{
+        return HeroCharactersViewModelFactory(app, getHeroCharacterUseCase, getSearchedHeroesUseCase)
     }
 }
