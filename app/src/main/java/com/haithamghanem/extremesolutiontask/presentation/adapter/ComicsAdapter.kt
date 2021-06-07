@@ -27,7 +27,7 @@ class ComicsAdapter: RecyclerView.Adapter<ComicsAdapter.ComicsAdapterViewHolder>
     val differ = AsyncListDiffer(this,callback)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ComicsAdapterViewHolder {
-        val binding = ComicsListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = com.haithamghanem.extremesolutiontask.databinding.ComicsListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ComicsAdapterViewHolder(binding)
     }
 
@@ -48,9 +48,9 @@ class ComicsAdapter: RecyclerView.Adapter<ComicsAdapter.ComicsAdapterViewHolder>
             // Log.d("sayedss", "${result.thumbnail.path +"."+ result.thumbnail.extension}")
             binding.comicName.text = item.name
             //https://ichef.bbci.co.uk/news/976/cpsprodpb/12A9B/production/_111434467_gettyimages-1143489763.jpg
-            val fullPath: String = item.resourceURI
-            Log.d("tamer", "bindCharacter: $fullPath")
-            Glide.with(binding.comicImg.context).load(fullPath).into(binding.comicImg)
+//            val fullPath: String = item.resourceURI
+//            Log.d("tamer", "bindCharacter: $fullPath")
+//            Glide.with(binding.comicImg.context).load(fullPath).into(binding.comicImg)
         }
     }
 

@@ -1,5 +1,6 @@
 package com.haithamghanem.extremesolutiontask
 
+import android.opengl.Visibility
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -33,12 +34,15 @@ class MarvelHeroesFragment : Fragment(), MarvelHeroesAdapter.RecyclerViewOnItemC
 
 
 
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_marvel_heroes, container, false)
+        val view =  inflater.inflate(R.layout.fragment_marvel_heroes, container, false)
+        return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -48,13 +52,23 @@ class MarvelHeroesFragment : Fragment(), MarvelHeroesAdapter.RecyclerViewOnItemC
         viewModel = (activity as MainActivity).viewModel
 
         initRecyclerView()
+
         viewHeroesList()
-        setSearchView()
+        fragmentMarvelHeroesBinding.searchIcon.setOnClickListener {
+            fragmentMarvelHeroesBinding.marvelLogoImg.visibility = View.GONE
+            fragmentMarvelHeroesBinding.searchView.visibility = View.VISIBLE
+            fragmentMarvelHeroesBinding.searchView.setQuery("",false)
+            fragmentMarvelHeroesBinding.searchView.isFocusedByDefault
+            setSearchView()
+        }
     }
 
     private fun viewHeroesList() {
         viewModel.getMarvelHeroCharacters(limit)
         viewModel.marvelHeroCharacters.observe(viewLifecycleOwner, { response ->
+            if(response.equals(null)){
+                return@observe
+            }
 
             when (response) {
                 is Resource.Success -> {
@@ -139,29 +153,35 @@ class MarvelHeroesFragment : Fragment(), MarvelHeroesAdapter.RecyclerViewOnItemC
     //Searching Functionality
     private fun viewSearchedHero(){
 
-        viewModel.searchedHeroCharacters.observe(viewLifecycleOwner, { response ->
 
-            when (response) {
-                is Resource.Success -> {
+        if (view!=null) {
+            viewModel.searchedHeroCharacters.observe(viewLifecycleOwner, { response ->
+                if (response.equals(null)) {
+                    return@observe
+                }
 
-                    Log.d("searchedherosuccess", "${response.data?.data?.count}")
-                    hideProgressBar()
-                    response.data?.let {
-                        marvelHeroesAdapter.differ.submitList(it.data.results)
+                when (response) {
+                    is Resource.Success -> {
+
+                        Log.d("searchedherosuccess", "${response.data?.data?.count}")
+                        hideProgressBar()
+                        response.data?.let {
+                            marvelHeroesAdapter.differ.submitList(it.data.results)
+                        }
+                    }
+                    is Resource.Error -> {
+                        hideProgressBar()
+                        response.message?.let {
+                            Toast.makeText(activity, "An error occurred : $it", Toast.LENGTH_SHORT)
+                                    .show()
+                        }
+                    }
+                    is Resource.Loading -> {
+                        showProgressBar()
                     }
                 }
-                is Resource.Error -> {
-                    hideProgressBar()
-                    response.message?.let {
-                        Toast.makeText(activity, "An error occurred : $it", Toast.LENGTH_SHORT)
-                                .show()
-                    }
-                }
-                is Resource.Loading -> {
-                    showProgressBar()
-                }
-            }
-        })
+            })
+        }
     }
 
     private fun setSearchView(){

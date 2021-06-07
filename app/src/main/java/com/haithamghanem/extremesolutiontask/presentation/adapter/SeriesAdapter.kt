@@ -48,9 +48,9 @@ class SeriesAdapter: RecyclerView.Adapter<SeriesAdapter.SeriesAdapterViewHolder>
             // Log.d("sayedss", "${result.thumbnail.path +"."+ result.thumbnail.extension}")
             binding.seriesName.text = item.name
             //https://ichef.bbci.co.uk/news/976/cpsprodpb/12A9B/production/_111434467_gettyimages-1143489763.jpg
-            val fullPath: String = item.resourceURI
-            Log.d("tamer", "bindCharacter: $fullPath")
-            Glide.with(binding.seriesImg.context).load(fullPath).into(binding.seriesImg)
+//            val fullPath: String = item.resourceURI
+//            Log.d("tamer", "bindCharacter: $fullPath")
+//            Glide.with(binding.seriesImg.context).load(fullPath).into(binding.seriesImg)
         }
     }
 }

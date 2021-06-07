@@ -18,31 +18,46 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <androidx.appcompat.widget.SearchView
-                android:id="@+id/searchView"
-                android:layout_width="300dp"
+            <FrameLayout
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:src="@drawable/marvel_logo"
-                app:theme="@style/SearchViewStyle"
-                android:singleLine="true"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.495"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0"
-                app:searchHintIcon="@drawable/ic_baseline_white_search_24"
-                app:queryHint="Search for a character..."
-                tools:ignore="MissingConstraints" >
+                app:layout_constraintTop_toTopOf="parent">
 
-<!--                <ImageView-->
-<!--                    android:layout_width="50dp"-->
-<!--                    android:layout_height="match_parent"-->
-<!--                    android:src="@drawable/marvel_logo"-->
-<!--                    />-->
-            </androidx.appcompat.widget.SearchView>
+                <ImageView
+                    android:id="@+id/marvelLogoImg"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/marvel_logo" />
+
+
+                <androidx.appcompat.widget.SearchView
+                    android:id="@+id/searchView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:singleLine="true"
+                    android:src="@drawable/marvel_logo"
+                    android:visibility="invisible"
+                    app:iconifiedByDefault="false"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.495"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0"
+                    app:queryHint="Search for a character..."
+                    app:searchHintIcon="@drawable/ic_baseline_white_search_24"
+                    app:theme="@style/SearchViewStyle"
+                    tools:ignore="MissingConstraints">
+
+
+                </androidx.appcompat.widget.SearchView>
+            </FrameLayout>
 
             <ImageView
+                android:id="@+id/searchIcon"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginEnd="16dp"

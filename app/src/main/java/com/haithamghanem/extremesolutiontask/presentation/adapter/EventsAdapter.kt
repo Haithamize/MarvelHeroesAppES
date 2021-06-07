@@ -50,9 +50,9 @@ class EventsAdapter : RecyclerView.Adapter<EventsAdapter.EventsAdapterViewHolder
             Log.d("eventlist", "bindCharacter: ${differ.currentList.size}")
             binding.eventName.text = item.name
             //https://ichef.bbci.co.uk/news/976/cpsprodpb/12A9B/production/_111434467_gettyimages-1143489763.jpg
-            val fullPath: String = item.resourceURI
-            Log.d("tamer", "bindCharacter: $fullPath")
-            Glide.with(binding.eventImg.context).load(fullPath).into(binding.eventImg)
+//            val fullPath: String = item.resourceURI
+//            Log.d("tamer", "bindCharacter: $fullPath")
+//            Glide.with(binding.eventImg.context).load(fullPath).into(binding.eventImg)
         }
     }
 }

@@ -48,9 +48,9 @@ class StoriesAdapter : RecyclerView.Adapter<StoriesAdapter.StoriesAdapterViewHol
             // Log.d("sayedss", "${result.thumbnail.path +"."+ result.thumbnail.extension}")
             binding.storyName.text = item.name
             //https://ichef.bbci.co.uk/news/976/cpsprodpb/12A9B/production/_111434467_gettyimages-1143489763.jpg
-            val fullPath: String = item.resourceURI
-            Log.d("tamer", "bindCharacter: $fullPath")
-            Glide.with(binding.storyImg.context).load(fullPath).into(binding.storyImg)
+//            val fullPath: String = item.resourceURI
+//            Log.d("tamer", "bindCharacter: $fullPath")
+//            Glide.with(binding.storyImg.context).load(fullPath).into(binding.storyImg)
         }
     }
 }
