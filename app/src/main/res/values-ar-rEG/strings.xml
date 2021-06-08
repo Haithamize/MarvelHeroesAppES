@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ExtremeSolutionTask</string>
+    <string name="description">الوصف</string>
+    <string name="title">العنوان</string>
+    <string name="comics">القصص المصورة</string>
+    <string name="events">الأحداث</string>
+    <string name="series">المسلسلات</string>
+    <string name="stories">القصص</string>
+    <string name="searchHero">إبحث عن البطل…</string>
+</resources>

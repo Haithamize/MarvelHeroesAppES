@@ -47,7 +47,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.0"
-                    app:queryHint="Search for a character..."
+                    app:queryHint="@string/searchHero"
                     app:searchHintIcon="@drawable/ic_baseline_white_search_24"
                     app:theme="@style/SearchViewStyle"
                     tools:ignore="MissingConstraints">
